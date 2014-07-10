@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2014 at 04:22 AM
+-- Generation Time: Jul 10, 2014 at 11:26 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.16
 
@@ -153,8 +153,9 @@ CREATE TABLE IF NOT EXISTS `student.information.tbl` (
 --
 
 INSERT INTO `student.information.tbl` (`student.number`, `student.firstname`, `student.lastname`, `student.middlename`, `date.of.birth`, `place.of.birth`, `sex`, `civil.status`, `citizenship`, `height`, `address`, `zip.code`, `email`, `guardian`, `guardian.contact.number`, `student.contact.number`, `weight`, `picture`) VALUES
+('11-00416', 'Sercondo', 'Protacio', 'Liemo', '12-13-04', 'San Pablo city', 'Male', 'Single', 'Filipino', 56, 'San Pablo City, Laguna', 4000, 'klimpong@gmail.com', 'Wertilio Decara', 929919291, 919929123, 58, 'http://localhost/AGILE_SCRUM/img/account/default.jpg'),
 ('12-12345', 'Reversio', 'Mercado', 'Lemio', '12-13-14', 'San Pablo City, Laguna', 'Male', 'Single', 'Filipino', 56, 'San Pablo City, Laguna', 4000, 'klampong@gmail.com', 'Orlando Dumdum', 2147483647, 2147483647, 56, 'http://localhost/AGILE_SCRUM/img/account/default.jpg'),
-('12-34567', 'Restituto', 'Panganiban', 'Mercado', '12-13-14', 'San Pablo', 'Male', 'Single', 'Filipino', 45, 'San Pablo City', 4000, 'klampong@gmail.com', 'asdasd', 919929123, 919991, 45, 'http://localhost/AGILE_SCRUM/img/account/default.jpg');
+('12-34567', 'Restituto', 'Panganiban', 'Mercado', '12-13-14', 'San Pablo', 'Male', 'Single', 'Filipino', 45, 'San Pablo City', 4000, 'aaa@yahoo.com', 'asdasd', 919929123, 919991, 45, 'http://localhost/AGILE_SCRUM/img/account/default.jpg');
 
 -- --------------------------------------------------------
 
@@ -190,9 +191,9 @@ CREATE TABLE IF NOT EXISTS `users.information.tbl` (
   `user.password` varchar(255) NOT NULL,
   `user.type` varchar(255) NOT NULL,
   `user.status` varchar(255) NOT NULL DEFAULT 'NOT ACTIVATED',
-  `user.agent` varchar(100) NOT NULL DEFAULT 'NONE',
-  `user.host` varchar(20) NOT NULL DEFAULT 'NONE',
   `user.account` varchar(20) NOT NULL DEFAULT 'OFFLINE',
+  `user.date.reg` date NOT NULL,
+  `user.date.exp` date NOT NULL,
   PRIMARY KEY (`user.name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -200,9 +201,10 @@ CREATE TABLE IF NOT EXISTS `users.information.tbl` (
 -- Dumping data for table `users.information.tbl`
 --
 
-INSERT INTO `users.information.tbl` (`user.number`, `user.name`, `user.password`, `user.type`, `user.status`, `user.agent`, `user.host`, `user.account`) VALUES
-('12-34567', '6d5b6975610a2fea6c12ee977b189c37', '6d5b6975610a2fea6c12ee977b189c37', 'Student', 'ACTIVATED', 'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.', '::1', 'ONLINE'),
-('11-00415', 'd38626c0c69034c384f5ed5700969cab', 'd38626c0c69034c384f5ed5700969cab', 'Faculty', 'ACTIVATED', 'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.', '::1', 'ONLINE');
+INSERT INTO `users.information.tbl` (`user.number`, `user.name`, `user.password`, `user.type`, `user.status`, `user.account`, `user.date.reg`, `user.date.exp`) VALUES
+('12-34567', '6d5b6975610a2fea6c12ee977b189c37', 'f8e50b1533f6337344dcb76bb6ae81d2', 'Student', 'ACTIVATED', 'OFFLINE', '2014-07-09', '2014-10-09'),
+('11-00415', 'd38626c0c69034c384f5ed5700969cab', 'd38626c0c69034c384f5ed5700969cab', 'Faculty', 'ACTIVATED', 'ONLINE', '2014-07-09', '2014-10-09'),
+('11-00416', 'e4261a4c015dd94505cc21b2e0e93616', 'e4261a4c015dd94505cc21b2e0e93616', 'Student', 'NOT ACTIVATED', 'OFFLINE', '2014-07-09', '0000-00-00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

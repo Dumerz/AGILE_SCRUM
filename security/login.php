@@ -87,14 +87,14 @@
 			            	$_SESSION['usernumber'] = $row['user.number'];
 			            	$_SESSION['username'] = $row['user.name'];
 			            	$_SESSION['usertype'] = $row['user.type'];
-			            	$this->list_client_details('ONLINE', $_SERVER['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR']);
+			            	$this->update_client_details('ONLINE');
 			            	$this->user_type_redirect();
 			            	
 			            }
 
 			            else {
-
-		            	$this->error_log("Activate your account <a href=\"activate.php\">here</a>");  
+			            if (!isset($_SESSION['activate'])) { $_SESSION['activate'] = $row['user.number']; }
+		            	$this->error_log("Your account is not yet activated<br/>Activate your account <a href=\"activate.php\">here</a>");  
 
 			            }
 		            }

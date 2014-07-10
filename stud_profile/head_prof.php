@@ -23,7 +23,3 @@ $x = mysql_fetch_array($query);
 echo "<hr/>";
 
 ?>
-
-
-
-<?php	include('../design/footer.php');?>

@@ -41,7 +41,7 @@
 				session_regenerate_id( );
 				$_SESSION = array( );
 				$_SESSION['client'] = $entry;
-				        header("Location:http://localhost/AGILE_SCRUM/security/login.php");
+				    header("Location:http://localhost/AGILE_SCRUM/security/login.php");
 
 			}
 
@@ -51,18 +51,15 @@
 
 		}
 
-		protected function list_client_details( $en_account, $en_agent, $en_host ) {
-
-			$add = mysql_real_escape_string($en_host);
-			$agent = mysql_real_escape_string($en_agent);
+		protected function update_client_details( $en_account ) {
 			$account = mysql_real_escape_string($en_account);
-			$sql = "UPDATE `users.information.tbl` SET `user.account` = '$account', `user.agent` = '$agent', `user.host` = '$add' WHERE `user.number` = '{$_SESSION['usernumber']}'";
+			$sql = "UPDATE `users.information.tbl` SET `user.account` = '$account', `user.date.exp` = ADDDATE(CURDATE(), INTERVAL 3 MONTH) WHERE `user.number` = '{$_SESSION['usernumber']}'";
 			$query = mysql_query($sql)or die(mysql_error());
 
 		}
 
 		public function client_logout( ) {
-			$this->list_client_details( 'OFFLINE', 'NONE', 'NONE' );
+			$this->update_client_details( 'OFFLINE' );
         	unset($_SESSION['usernumber']);
         	unset($_SESSION['username']);
         	unset($_SESSION['usertype']);
@@ -106,9 +103,9 @@
 
 		public function user_type_redirect( ) {
 
-			if($this->is_student()) { header("Location:http://localhost/AGILE_SCRUM/stud_profile/stud_profile.php"); }
+			if($this->is_student()) { header("Location:http://localhost/AGILE_SCRUM/stud_profile/stud_profile.php?basic"); }
 			
-			else if($this->is_faculty()) { header("Location:http://localhost/AGILE_SCRUM/faculty/faculty_profile.php"); }
+			else if($this->is_faculty()) { header("Location:http://localhost/AGILE_SCRUM/faculty/faculty_profile.php?basic"); }
 
 			else if($this->is_college_admin()) { header("Location:http://localhost/AGILE_SCRUM/admin/college/profile.php"); }
 
